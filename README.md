@@ -1,77 +1,71 @@
 # Erome Scraper PRO 🚀
 
-A high-performance, asynchronous web application designed to scrape and download media from Erome albums with precision and speed.
+Una aplicación web asíncrona de alto rendimiento diseñada para extraer y descargar contenido multimedia de álbumes de Erome con precisión y velocidad.
 
-![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)
+![Versión](https://img.shields.io/badge/version-3.0.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)
 ![FastAPI](https://img.shields.io/badge/fastapi-0.110%2B-green.svg)
 
-## ✨ Features
+## ✨ Características
 
-- **🚀 Concurrent Downloads**: Multi-threaded, asynchronous file streaming for maximum throughput.
-- **📊 Real-time Progress**: Interactive Web Dashboard with live progress bars, speed indicators, and status updates.
-- **💾 Persistent Queue**: Automatically saves your download state. Resumes pending downloads upon restart.
-- **🛡️ Integrity Protection**: Automatic cleanup of partial/corrupted files and robust error handling.
-- **🎨 Cyberpunk Stealth UI**: A premium, dark-themed user interface designed for focus and efficiency.
-- **📂 Smart Organization**: Automatically creates album-specific subdirectories for organized media storage.
+- **🚀 Descargas Concurrentes**: Transmisión de archivos asíncrona y multi-hilo para un rendimiento máximo.
+- **📊 Progreso en Tiempo Real**: Panel de control web interactivo con barras de progreso en vivo, indicadores de velocidad y actualizaciones de estado.
+- **💾 Cola Persistente**: Guarda automáticamente el estado de tus descargas. Reanuda las tareas pendientes al reiniciar la aplicación.
+- **🛡️ Protección de Integridad**: Limpieza automática de archivos parciales o dañados y manejo de errores robusto.
+- **🎨 Interfaz Cyberpunk Stealth**: Una interfaz de usuario premium con tema oscuro, diseñada para la eficiencia.
+- **📂 Organización Inteligente**: Crea automáticamente subdirectorios por álbum para mantener tu biblioteca organizada.
 
-## 🛠️ Tech Stack
+## 🛠️ Stack Tecnológico
 
 - **Backend**: Python 3.12+, FastAPI, Asyncio.
-- **Networking**: `httpx` for high-performance streaming.
-- **Frontend**: Vanilla HTML5, CSS3 (Glassmorphism), JavaScript (ES6+).
-- **Persistence**: JSON-based state management for lightweight reliability.
+- **Networking**: `httpx` para transmisión de alto rendimiento.
+- **Frontend**: HTML5 puro, CSS3 (Glassmorphism), JavaScript (ES6+).
+- **Persistencia**: Gestión de estado basada en JSON para una confiabilidad ligera.
 
-## 🚀 Quick Start
+## 🚀 Inicio Rápido
 
-### Prerequisites
+### Requisitos Previos
 
-- Python 3.12 or higher.
-- `pip` or `uv` for dependency management.
+- Windows OS (para usar el script de inicio rápido).
+- Python 3.12 o superior instalado.
 
-### Installation
+### Instalación y Ejecución
 
-1. **Clone the repository**:
+La forma más sencilla de iniciar la aplicación es utilizando el archivo por lotes incluido, que configurará automáticamente el entorno virtual e instalará las dependencias necesarias.
+
+1. **Clona el repositorio**:
    ```bash
    git clone https://github.com/latinokodi/eromescraper.git
    cd eromescraper
    ```
 
-2. **Set up a virtual environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+2. **Ejecuta la Aplicación**:
+   Simplemente haz doble clic en el archivo `run.bat` o ejecútalo desde la terminal:
+   ```cmd
+   run.bat
    ```
 
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+   *Este script se encargará de crear el entorno virtual, instalar las dependencias y lanzar el servidor.*
 
-### Running the Application
+### Acceso a la Interfaz
 
-Start the FastAPI server:
+Una vez que el servidor esté en funcionamiento, abre tu navegador y dirígete a:
+`http://127.0.0.1:8000`
 
-```bash
-python -m src.main
-```
+## 📖 Uso
 
-The application will be available at `http://127.0.0.1:8000`.
+1. Abre el panel de control en tu navegador.
+2. Pega la URL del álbum de Erome en el campo de entrada.
+3. Haz clic en "Sync Album" (Sincronizar Álbum) para iniciar la extracción y descarga.
+4. Monitorea el progreso de cada archivo y las estadísticas globales en tiempo real.
 
-## 📖 Usage
+## 🤝 Contribuciones
 
-1. Open your browser and navigate to the dashboard.
-2. Paste the Erome album URL into the input field.
-3. Click "Sync Album" to begin the extraction and download process.
-4. Monitor individual file progress and global statistics in real-time.
+¡Las contribuciones son bienvenidas! Si tienes sugerencias para nuevas funciones o mejoras, no dudes en abrir un "issue" o enviar una solicitud de extracción (pull request).
 
-## 🤝 Contributing
+## 📜 Licencia
 
-Contributions are welcome! If you have suggestions for new features or improvements, feel free to open an issue or submit a pull request.
-
-## 📜 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 ---
-*Built with ❤️ for the high-volume media community.*
+*Desarrollado con ❤️ para la comunidad de gestión de medios de alto volumen.*
