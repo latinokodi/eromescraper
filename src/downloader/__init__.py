@@ -1,0 +1,1 @@
+"""Async download manager with httpx streaming."""

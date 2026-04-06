@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Erome PRO</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-atom neon-cyan"></i>
+                NEBULA <span class="logo-sub">EROME PRO</span>
+            </div>
+            <div class="control-bar">
+                <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="urlInput" placeholder="Paste Erome video album URL to scan..." onkeydown="if(event.key==='Enter') scrapeUrl()">
+                </div>
+                <button class="action-btn-primary" id="scrapeBtn" onclick="scrapeUrl()">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> SCRAPE
+                </button>
+            </div>
+            <div class="sys-time" id="sysTime">11:28</div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="main-layout">
+            <!-- Sidebar Navigation & Settings (Unified) -->
+            <aside class="settings-sidebar pane-glass" id="appSidebar">
+                <!-- Navigation Top Bar -->
+                <div class="sidebar-nav">
+                    <div class="nav-item active" onclick="switchTab('dashboard')" id="nav-dashboard" title="Dashboard">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="nav-item" id="nav-grabber" onclick="switchTab('grabber')" title="Link Grabber">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <div class="nav-item" id="nav-console" onclick="switchTab('console')" title="System Console">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <div class="sidebar-spacer"></div>
+                    <div class="nav-item" id="toggleSidebar" onclick="toggleSidebar()" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </div>
+                </div>
+
+                <!-- Config Sections (Scrollable) -->
+                <div class="sidebar-config-area">
+                        <div class="panel-section">
+                            <label class="section-label">Destination</label>
+                            <div class="folder-box">
+                                <span class="folder-path" id="folderPath">downloads</span>
+                            </div>
+                        </div>
+
+
+
+                    
+                    <div class="sidebar-spacer"></div>
+                    
+                    <!-- Footer Folder Link -->
+                    <div class="nav-item folder-link" onclick="openFolder()" title="Open Downloads Folder">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span class="label-text">Downloads Folder</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <section class="content-area">
+                <!-- VIEW: DASHBOARD (Default) -->
+                        <section id="view-dashboard" class="view-panel active">
+                            <div class="grid-container" id="gridContainer">
+                                <section class="media-grid" id="mediaGrid">
+                                    <div class="empty-state">
+                                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                                        <p>Enter an Erome album URL to begin scanning assets.</p>
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
+
+                        <!-- VIEW: SYSTEM CONSOLE (New Screen) -->
+                        <section id="view-console" class="view-panel">
+                            <div class="console-tab-header">
+                                <div class="section-label"><i class="fa-solid fa-terminal"></i> LOG TERMINAL</div>
+                                <div class="console-actions">
+                                    <button class="btn-micro" onclick="document.getElementById('logContainer').innerHTML = ''">
+                                        <i class="fa-solid fa-trash"></i> CLEAR LOGS
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="console-main-box" id="logContainer">
+                                <div class="log-entry"><span class="log-time">[SYS]</span> Application Ready.</div>
+                            </div>
+                        </section>
+
+                        <!-- VIEW: LINK GRABBER -->
+                        <section id="view-grabber" class="view-panel">
+                            <div class="grabber-view pane-glass">
+                                <div class="grabber-header">
+                                    <h2>Direct Link Resolution</h2>
+                                    <p>Enter an album URL to extract direct media links for external managers.</p>
+                                </div>
+                                <div class="grabber-controls">
+                                    <input type="text" id="grabUrl" placeholder="Enter Erome album URL..." onkeydown="if(event.key==='Enter') grabLinks()">
+                                    <button class="action-btn-primary" onclick="grabLinks()" id="grabBtn">GRAB LINKS</button>
+                                </div>
+                                <div class="grabber-actions">
+                                    <button class="btn-micro" onclick="copyAllGrabbed()">Copy All</button>
+                                    <button class="btn-micro" onclick="clearGrabber()">Clear</button>
+                                </div>
+                                <div class="grabber-output" id="grabberList">
+                                    <div class="empty-state">Enter a link above to start.</div>
+                                </div>
+                            </div>
+                        </section>
+                </section>
+            </main>
+
+        <!-- Footer -->
+        <footer class="app-footer pane-glass">
+            <div class="footer-left">
+                <div class="album-info">
+                    <span id="albumTitle" class="neon-cyan">No Album Selected</span>
+                    <span id="mediaCount" class="meta-info">0 detected assets</span>
+                </div>
+            </div>
+
+            <div class="footer-center">
+                <div class="global-progress">
+                    <div class="progress-info">
+                        <span id="statusText">System Ready</span>
+                        <span id="progressPct">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="overallProgress" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <button class="action-btn-primary download-btn" id="downloadBtn" onclick="startDownload()" disabled>
+                    <i class="fa-solid fa-download"></i> DOWNLOAD
+                </button>
+            </div>
+        </footer>
+
+        <!-- CUSTOM THEMED MODALS -->
+        <div id="modal-overlay" class="modal-overlay">
+            <div class="conflict-modal pane-glass fade-in">
+                <div class="modal-header">
+                    <i class="fa-solid fa-triangle-exclamation neon-yellow"></i>
+                    <h3>Folder Conflict</h3>
+                </div>
+                <div class="modal-body">
+                    <p>A folder named <span id="conflict-folder-name" class="neon-cyan"></span> already exists in your downloads directory.</p>
+                    <p class="modal-detail">How would you like to proceed?</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-modal btn-danger" onclick="resolveConflict('overwrite')">
+                        <i class="fa-solid fa-trash-can"></i> OVERWRITE (DELETE ALL)
+                    </button>
+                    <button class="btn-modal btn-primary" onclick="resolveConflict('skip')">
+                        <i class="fa-solid fa-forward-step"></i> SKIP EXISTING
+                    </button>
+                    <button class="btn-modal btn-secondary" onclick="resolveConflict('cancel')">
+                        <i class="fa-solid fa-xmark"></i> CANCEL
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Erome Scraper - Dependencies
+# FastAPI web application with async HTTP
+
+# Web Framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+
+# HTTP Client
+httpx>=0.28.0
+
+# HTML Parsing
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+
+# Data Validation
+pydantic>=2.10.0
+
+# Testing
+pytest>=8.0.0
+pytest-asyncio>=0.24.0
+
+# WebSocket support is included in uvicorn[standard]

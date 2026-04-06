@@ -1,0 +1,10 @@
+.agent
+.claude
+.pytest_cache/
+venv/
+__pycache__/
+*.pyc
+
+# Downloads folder
+downloads/*
+!downloads/.gitkeep

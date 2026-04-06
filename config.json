@@ -1,0 +1,8 @@
+{
+    "download_folder": "downloads",
+    "max_concurrent_downloads": 5,
+    "video_filter": true,
+    "image_filter": true,
+    "retry_count": 3,
+    "chunk_size": 8192
+}
